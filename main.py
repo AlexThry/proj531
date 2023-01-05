@@ -7,12 +7,20 @@ from src.Class_Utilisateur import *
 
 if __name__ == "__main__":
     while True:
-        conn = sql.connect("Proj531.sql")
-        database = conn.cursor()
+        ########## Ouverture database #########
+
+        dataSQL =  open("Proj531.sql", "r")
+        commandeSQL = dataSQL.readlines()
+        conn = sql.connect("database.db")
+        for i in commandeSQL
+        database = conn.cursor(commandeSQL)
 
         ########## Création du Jeu ##########
+
         game = Jeu()
+
         ########## MENU ##########
+
         print()
         print("########## CONNEXION ########## \n")
         print("1. Se Connecter")
@@ -28,7 +36,7 @@ if __name__ == "__main__":
             if game.is_connected:
                 print("########## MENU ########## \n")
                 print("1. Jouer \n2. Historique \n")
-                
+
                 
 
 

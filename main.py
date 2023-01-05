@@ -37,10 +37,4 @@ if __name__ == "__main__":
                 print("########## MENU ########## \n")
                 print("1. Jouer \n2. Historique \n")
 
-                
-
-
-
-
-
         database.close()

@@ -13,7 +13,12 @@ if __name__ == "__main__":
     ########## Création du Jeu ##########
 
     game = Jeu()
-
+    curs.execute("""
+   CREATE TABLE `setQuestion` (
+  `idQuestion` int(11) NOT NULL,
+  `idQuizz` int(11) NOT NULL
+);
+    """)
     ########## MENU ##########
 
     while True:

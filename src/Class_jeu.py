@@ -15,7 +15,6 @@ class Jeu:
 	
 		if bon_mdp:
 			self.is_connected = True
-			print(self.is_connected)
 
 	def creer_compte(self, database):
 		login = input("Login : \n")

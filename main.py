@@ -17,6 +17,7 @@ if __name__ == "__main__":
     ########## MENU ##########
 
     while True:
+        print(curs.execute("SELECT * FROM Utilisateur").fetchall())
         print()
         print("########## CONNEXION ########## \n")
         print("1. Se Connecter")
@@ -32,11 +33,9 @@ if __name__ == "__main__":
             game.connexion(curs)
             if game.is_connected:
                 print("########## MENU ########## \n")
-                print(f"Vous êtes connectés en tant que {}")
                 print("1. Jouer \n2. Historique \n")
                 rep = input("Faites votre choix \n")
 
-                
 
 
 

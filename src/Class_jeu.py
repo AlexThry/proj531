@@ -23,9 +23,9 @@ class Jeu:
 		is_Admin = input("Compte administrateur ? o/n : \n")
 		if is_Admin == "o":
 			admin_key = input("Clé administrateur : \n")
-			if admin_key == 1234:
-				database.execute(f"INSERT INTO Utilisateur VALUES ({login}, {mdp}, true)")
+			if admin_key == "1234":
+				database.execute(f"INSERT INTO VALUES (?,?,?,?)", (0, login, mdp, True))
 			else:
 				print("Vous ne pouvez pas être administrateur.")
 		else:
-			database.execute(f"INSERT INTO Utilisateur VALUES ({login}, {mdp}, false)")
+			database.execute(f"INSERT INTO Utilisateur VALUES (?,?,?,?)", (0, login, mdp, False))

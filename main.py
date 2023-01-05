@@ -9,7 +9,7 @@ if __name__ == "__main__":
     ########## Ouverture database #########
     conn = sql.connect("database.db")
     curs = conn.cursor()
-    print(curs.execute("""SELECT * FROM UTILISATEUR""").fetchall())
+    # print(curs.execute("""SELECT * FROM UTILISATEUR""").fetchall())
     ########## Création du Jeu ##########
 
     game = Jeu()
@@ -24,13 +24,21 @@ if __name__ == "__main__":
         print("3. Quitter \n")
         rep = input("Faites votre choix \n")
         if rep == "3":
+            curs.close()
             break
         elif rep == "2":
-            game.creer_compte(database)
+            game.creer_compte(curs)
         elif rep == "1":
-            game.connexion(database)
+            game.connexion(curs)
             if game.is_connected:
                 print("########## MENU ########## \n")
+                print(f"Vous êtes connectés en tant que {}")
                 print("1. Jouer \n2. Historique \n")
+                rep = input("Faites votre choix \n")
 
-        database.close()
+                
+
+
+
+
+

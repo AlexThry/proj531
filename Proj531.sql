@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : jeu. 05 jan. 2023 à 11:11
+-- Généré le : jeu. 05 jan. 2023 à 14:54
 -- Version du serveur : 10.4.21-MariaDB
 -- Version de PHP : 8.1.6
 
@@ -73,6 +73,16 @@ CREATE TABLE `Utilisateur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Déchargement des données de la table `Utilisateur`
+--
+
+INSERT INTO `Utilisateur` (`idUtilisateur`, `nom`, `mdp`, `isAdmin`) VALUES
+(1, 'Alexis', '1234', 1),
+(2, 'Arthur', '1234', 1),
+(3, 'Andres', '1234', 1),
+(4, 'Carlyne', '1234', 1);
+
+--
 -- Index pour les tables déchargées
 --
 
@@ -126,7 +136,7 @@ ALTER TABLE `quizz`
 -- AUTO_INCREMENT pour la table `Utilisateur`
 --
 ALTER TABLE `Utilisateur`
-  MODIFY `idUtilisateur` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUtilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

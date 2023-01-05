@@ -1,3 +1,3 @@
 class Quizz:
-  def __init_(self):
-    pass
+    def __init_(self):
+        pass

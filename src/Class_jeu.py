@@ -30,4 +30,4 @@ class Jeu:
 			database.execute(f"INSERT INTO Utilisateur VALUES ({login}, {mdp}, false)")
 
 	def recuperer_sauvegarde(self):
-		
+		pass

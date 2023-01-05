@@ -13,10 +13,16 @@ if __name__ == "__main__":
 	########## Création du Jeu ##########
 
 	game = Jeu()
-
+	curs.execute("""
+   CREATE TABLE `setQuestion` (
+  `idQuestion` int(11) NOT NULL,
+  `idQuizz` int(11) NOT NULL
+);
+	""")
 	########## MENU ##########
 
 	while True:
+		print(curs.execute("SELECT * FROM Utilisateur").fetchall())
 		print()
 		print("########## CONNEXION ########## \n")
 		print("1. Se Connecter")

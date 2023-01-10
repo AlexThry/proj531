@@ -15,7 +15,7 @@ class Partie:
     def chronomètre(self):
         return self.temps
 
-    def score(self):
+    def get_score(self):
         return self.score
 
     def question(self):

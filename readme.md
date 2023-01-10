@@ -26,5 +26,5 @@ pip intall sqlite3
 
 ## Crédits
 
-- Développeur: Alexis THIERRY Arthur RATTANAVONG Carlos Cortes ANDRES MIRANDA
+- Développeur: Alexis THIERRY Arthur RATTANAVONG Carlos Cortes ANDRES MIRANDA Carlyne BARRACHIN
 - Design de l'interface: Carlos Cortes ANDRES MIRANDA 

@@ -3,20 +3,20 @@ class Partie:
         self.score = score
         self.temps = temps
 
-    def lancement_partie():
+    def lancement_partie(self):
         pass
 
-    def choix_quizz():
+    def choix_quizz(self):
         pass
 
-    def choix_question():
+    def choix_question(self):
         pass
 
-    def chronomètre():
+    def chronomètre(self):
         return self.temps
 
-    def score():
+    def score(self):
         return self.score
 
-    def question():
+    def question(self):
         pass

@@ -1,4 +1,4 @@
-import sqlite3 as sql
+import sqlite3 as sql 
 from src.Class_Jeu import *
 from src.Class_Partie import *
 from src.Class_Quizz import *
@@ -7,18 +7,16 @@ from src.Class_Utilisateur import *
 
 if __name__ == "__main__":
 	########## Ouverture database #########
-	conn = sql.connect("database.db")
+	conn = sql.connect(database="database.db")
 	curs = conn.cursor()
+	with open('Proj531.sql', 'r') as f:
+		commande = f.read()
+	curs.execute(commande)
 	# print(curs.execute("""SELECT * FROM UTILISATEUR""").fetchall())
 	########## Création du Jeu ##########
 
 	game = Jeu()
-	curs.execute("""
-   CREATE TABLE `setQuestion` (
-  `idQuestion` int(11) NOT NULL,
-  `idQuizz` int(11) NOT NULL
-);
-	""")
+
 	########## MENU ##########
 
 	while True:

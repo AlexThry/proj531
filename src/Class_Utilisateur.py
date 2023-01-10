@@ -5,6 +5,6 @@ class Utilisateur:
 
     def historique(self, database, login):
         id_user = database.execute(
-            f'SELECT id_utilisateur FROM Utilisateur WHERE login={login}')
-        historique = f'SELECT mode,score FROM HISTORIQUE WHERE id_user={id_user}'
+            f'SELECT id_utilisateur FROM Utilisateur WHERE login = {login}')
+        historique = f'SELECT mode, score FROM HISTORIQUE WHERE id_user = {id_user}'
         print(historique)

@@ -64,10 +64,10 @@ class Menu:
 								database.afficher_quizzs(conn)
 
 							elif rep == "6":
-								database.set_admin_key(conn)
+								game.set_admin_key()
 
 							elif rep == "7":
-								print(f"La clé administrateur est : {database.get_admin_key()}\n")
+								print(f"La clé administrateur est : {game.get_admin_key()}\n")
 							
 							elif rep == "8":
 								menu_admin = False

@@ -9,23 +9,23 @@ class Database:
 	def set_user(self, user):
 		self.user = user
 
-	def get_admin_key(self):
-		path = os.path.join('assets', 'Admin_Key.txt')
-		with open(path, "r") as f:
-			res = f.read()
-			f.close()
-		return res
+	# def get_admin_key(self):
+	# 	path = os.path.join('assets', 'Admin_Key.txt')
+	# 	with open(path, "r") as f:
+	# 		res = f.read()
+	# 		f.close()
+	# 	return res
 
-	def set_admin_key(self):
-		path = os.path.join("assets", "Admin_Key.txt")
-		if self.is_admin:
-			new_admin_key = input(
-				"Veuillez rentrer la nouvelle clé administrateur : \n")
-			with open(path, "w") as f:
-				f.write(new_admin_key)
-				print(
-					f"La clé administrateur est désormais : {self.get_admin_key()}")
-				f.close()
+	# def set_admin_key(self):
+	# 	path = os.path.join("assets", "Admin_Key.txt")
+	# 	if self.is_admin:
+	# 		new_admin_key = input(
+	# 			"Veuillez rentrer la nouvelle clé administrateur : \n")
+	# 		with open(path, "w") as f:
+	# 			f.write(new_admin_key)
+	# 			print(
+	# 				f"La clé administrateur est désormais : {self.get_admin_key()}")
+	# 			f.close()
 
 	def creer_compte(self, conn):
 		curs = conn.cursor()

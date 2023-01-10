@@ -43,12 +43,12 @@ class Jeu:
             admin_key = input("Clé administrateur : \n")
             if admin_key == 1234:
                 database.execute(
-                    f"INSERT INTO Utilisateur VALUES ({login}, {mdp}, true)")
+                    f"INSERT INTO Utilisateur (nom,mdp,isadmin) VALUES ({login}, {mdp}, True)")
             else:
                 print("Vous ne pouvez pas être administrateur.")
         else:
             database.execute(
-                f"INSERT INTO Utilisateur VALUES ({login}, {mdp}, false)")
+                f"INSERT INTO Utilisateur (nom,mdp,isadmin) VALUES ({login}, {mdp}, False)")
 
     def recuperer_sauvegarde(self):
         pass

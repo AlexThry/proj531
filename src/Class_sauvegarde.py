@@ -1,3 +1,3 @@
 class Sauvegarde:
-    def __init_(self):
+    def __init__(self):
         pass

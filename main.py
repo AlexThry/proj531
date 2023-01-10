@@ -6,11 +6,12 @@ from src.Class_Sauvegarde import *
 from src.Class_Utilisateur import *
 
 if __name__ == "__main__":
-    ########## Ouverture database #########
-    conn = sql.connect("database.db")
-    curs = conn.cursor()
-    # print(curs.execute("""SELECT * FROM UTILISATEUR""").fetchall())
-    ########## Création du Jeu ##########
+	########## Ouverture database #########
+	conn = sql.connect("database.db")
+	curs = conn.cursor()
+	curs.execute("CREATE TABLE Utilisateur (idUser INTEGER PRIMARY KEY AUTOINCREMENT, nom VARCHAR, mdp VARCHAR, isAdmin INTEGER(1)); CREATE TABLE")
+
+	########## Création du Jeu ##########
 
     game = Jeu()
     curs.execute("""

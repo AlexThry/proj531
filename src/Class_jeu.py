@@ -1,7 +1,7 @@
 
 
 class Jeu:
-    def __init_(self):
+    def __init__(self):
         return None
 
     def connexion(self, database):
@@ -21,7 +21,7 @@ class Jeu:
                 admin_key = input("Clé administrateur : \n")
                 if admin_key == "1234":
                     database.execute(
-                        f"INSERT INTO VALUES (?,?,?,?)", (0, login, mdp, True))
+                        f"INSERT INTO Utilisateur VALUES ({login}, {mdp}, true)")
                 else:
                     print("Vous ne pouvez pas être administrateur.")
             else:

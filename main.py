@@ -1,4 +1,4 @@
-import sqlite3 as sql 
+import sqlite3 as sql
 from src.Class_Jeu import *
 from src.Class_Partie import *
 from src.Class_Quizz import *
@@ -7,14 +7,19 @@ from src.Class_Utilisateur import *
 
 if __name__ == "__main__":
 	########## Ouverture database #########
-	conn = sql.connect(database="database.db")
+	conn = sql.connect("database.db")
 	curs = conn.cursor()
 	curs.execute("CREATE TABLE Utilisateur (idUser INTEGER PRIMARY KEY AUTOINCREMENT, nom VARCHAR, mdp VARCHAR, isAdmin INTEGER(1)); CREATE TABLE")
 
 	########## Création du Jeu ##########
 
 	game = Jeu()
-
+	curs.execute("""
+   CREATE TABLE `setQuestion` (
+  `idQuestion` int(11) NOT NULL,
+  `idQuizz` int(11) NOT NULL
+);
+	""")
 	########## MENU ##########
 
 	while True:

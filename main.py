@@ -4,9 +4,11 @@ from src.Class_Partie import *
 from src.Class_Quizz import *
 from src.Class_Sauvegarde import *
 from src.Class_Utilisateur import *
+from src.Class_Menu import *
+from src.Class_Database import *
 
 if __name__ == "__main__":
-	########## Ouverture database #########
+	########## INITIALISATION #########
 	conn = sql.connect("database.db")
 	curs = conn.cursor()
 	curs.execute("CREATE TABLE IF NOT EXISTS Utilisateur (idUtilisateur INTEGER PRIMARY KEY AUTOINCREMENT, nom VARCHAR, mdp VARCHAR, isAdmin INTEGER(1), idHisto INTEGER REFERENCES Historique (idHisto))")
@@ -19,37 +21,11 @@ if __name__ == "__main__":
 	########## Création du Jeu ##########
 
 	game = Jeu()
+	menu = Menu()
+	database = Database()
 
 	########## MENU ##########
 
-	while True:
-		print("########## CONNEXION ########## \n")
-		print("1. Se Connecter")
-		print("2. Créer un compte")
-		print("3. Quitter \n4. Afficher les utilisateurs")
-		rep = input("Faites votre choix \n")
-		if rep == "3":
-			conn.commit()
-			conn.close()
-			break
-		elif rep == "2":
-			game.creer_compte(conn)
-		elif rep == "1":
-			game.connexion(conn)
-			while game.get_is_connected():
-				print("########## MENU ########## \n")
-				print("1. Jouer \n2. Historique \n3. Deconnecter\n4. Supprimer le compte")
-				if game.get_is_admin():
-					print("5. Changer la clé administrateur")
-				rep = input("Faites votre choix \n")
-				if rep == "3":
-					game.deconnexion()
-				if rep == "4":
-					game.supprimer_compte(conn)
-				if game.get_is_admin() and rep == "5":
-					game.set_admin_key()
-		elif rep == "4":
-			users = curs.execute("SELECT * FROM Utilisateur").fetchall()
-			for user in users:
-				print(user[1])
-			
+	menu.execute(game, conn, database)
+
+	

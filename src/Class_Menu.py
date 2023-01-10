@@ -38,34 +38,43 @@ class Menu:
 					if rep == "3":
 						game.deconnexion()
 
-					if rep == "4":
+					elif rep == "4":
 						database.supprimer_compte(conn, game)
 
-					if game.get_is_admin() and rep == "5":
-						print("########## ADMINISTRATEUR ##########\n")
-						print("1. Créer une question \n2. Créer un Quizz \n3. Afficher les questions \n4. Afficher les quizzs\n5. Changer la clé administrateur \n6. Afficher la clé administrateur")
-						rep = input("Faites votre choix \n")
+					elif game.get_is_admin() and rep == "5":
+						menu_admin = True
+						while menu_admin:
+							print("########## ADMINISTRATEUR ##########\n")
+							print("1. Créer une question \n2. Créer un Quizz \n3. Ajouter des questions à un quizz \n4. Afficher les questions \n5. Afficher les quizzs\n6. Changer la clé administrateur \n7. Afficher la clé administrateur \n8. Retour")
+							rep = input("Faites votre choix \n")
 
-						if game.get_is_admin() and rep == "1":
-							database.creer_question(conn)
+							if rep == "1":
+								database.creer_question(conn)
 
-						if game.get_is_admin() and rep == "2":
-							database.creer_quizz(conn)
+							elif rep == "2":
+								database.creer_quizz(conn)
+							
+							elif rep == "3":
+								database.ajouter_questions_quizz(conn)
 
-						if game.get_is_admin() and rep == "3":
-							database.afficher_questions(conn)
+							elif rep == "4":
+								database.afficher_questions(conn)
 
-						if game.get_is_admin() and rep == "4":
-							database.afficher_quizzs(conn)
+							elif rep == "5":
+								database.afficher_quizzs(conn)
 
-						if game.get_is_admin() and rep == "5":
-							database.set_admin_key(conn)
+							elif rep == "6":
+								database.set_admin_key(conn)
 
-						if game.get_is_admin() and rep == "6":
-							print(f"La clé administrateur est : {database.get_admin_key()}\n")
+							elif rep == "7":
+								print(f"La clé administrateur est : {database.get_admin_key()}\n")
+							
+							elif rep == "8":
+								menu_admin = False
 
-						else:
-							print("Veuillez effectuer un choix correct")
+							else:
+								print("Veuillez effectuer un choix correct")
+
 
 
 					else:

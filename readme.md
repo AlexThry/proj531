@@ -11,6 +11,11 @@ Ce quizz a été développé pour permettre aux utilisateurs de tester leurs con
 ```
 git clone https://github.com/AlexThry/proj531
 ```
+Installez les librairies nécessaires au fonctionnement du programme
+```
+pip install tkinter
+pip intall sqlite3
+```
 
 ## Utilisation
 
@@ -23,3 +28,5 @@ git clone https://github.com/AlexThry/proj531
 
 - Développeur: Alexis THIERRY Arthur RATTANAVONG Carlos Cortes ANDRES MIRANDA
 - Design de l'interface: Carlos Cortes ANDRES MIRANDA 
+
+<3<3

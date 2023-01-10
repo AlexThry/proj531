@@ -9,10 +9,8 @@ if __name__ == "__main__":
 	########## Ouverture database #########
 	conn = sql.connect(database="database.db")
 	curs = conn.cursor()
-	with open('Proj531.sql', 'r') as f:
-		commande = f.read()
-	curs.execute(commande)
-	# print(curs.execute("""SELECT * FROM UTILISATEUR""").fetchall())
+	curs.execute("CREATE TABLE Utilisateur (idUser INTEGER PRIMARY KEY AUTOINCREMENT, nom VARCHAR, mdp VARCHAR, isAdmin INTEGER(1)); CREATE TABLE")
+
 	########## Création du Jeu ##########
 
 	game = Jeu()

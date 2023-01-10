@@ -28,5 +28,3 @@ pip intall sqlite3
 
 - Développeur: Alexis THIERRY Arthur RATTANAVONG Carlos Cortes ANDRES MIRANDA
 - Design de l'interface: Carlos Cortes ANDRES MIRANDA 
-
-<3<3

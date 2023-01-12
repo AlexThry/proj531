@@ -23,8 +23,9 @@ pip intall sqlite3
 2. Connectez vous ou créez un compte utilisateur
 3. Sélectionnez ensuite jouer et sélectionnez un quizz parmis tous nos quizz amusants
 4. Une fois toutes les questions terminées, vous pourrez voir vos résultats
+5. Une fois connecté vous pouvez aussi voir votre historique ou supprimer votre compte ou vous déconnecter pour quitter le script
 
 ## Crédits
 
 - Développeur: Alexis THIERRY Arthur RATTANAVONG Carlos Cortes ANDRES MIRANDA Carlyne BARRACHIN
-- Design de l'interface: Carlos Cortes ANDRES MIRANDA 
+- Design de l'interface: Carlos Cortes ANDRES MIRANDA Carlyne BARRACHIN THIERRY ALEXIS RATTANAVONG Arthur

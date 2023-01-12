@@ -33,10 +33,10 @@ class Jeu:
         return self.is_connected
 
     def set_is_connected(self, bool) -> None:
-        """permet de 
+        """permet de modifier l'état de connexion
 
         Args:
-                bool (_type_): _description_
+                bool (bool): True pour un état connecté et False pour un état déconnecté
         """
         self.is_connected = bool
 

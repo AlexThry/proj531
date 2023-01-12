@@ -35,8 +35,8 @@ class Class_menu:
         buttonQuestion = Button(self.information, text= "Ajouter une question",font=("Courrier",18),bg="#FFCCFF",fg="#FF0080",width=30,command=self.login())
         buttonQuestion.grid(row=1,column=2,padx=10, pady=10)
 
-        buttonQuestion = Button(self.information, text= "Quizz",font=("Courrier",18),bg="#FFCCFF",fg="#FF0080",width=30,command=self.login())
-        buttonQuestion.grid(row=2,column=2,padx=10, pady=10)
+        buttonQuizz = Button(self.information, text= "Quizz",font=("Courrier",18),bg="#FFCCFF",fg="#FF0080",width=30,command=self.login())
+        buttonQuizz.grid(row=2,column=2,padx=10, pady=10)
 
         label_histo = Label(self.information,text = "Historique:",font=("Courrier",18),bg=self.color,fg="White")
         label_histo.grid(row=6,column=1,padx=10, pady=10)
@@ -48,12 +48,15 @@ class Class_menu:
 
         label_MJ = Label(self.information,text = "Modes de Jeu:",font=("Courrier",18),bg=self.color,fg="White")
         label_MJ.grid(row=3,column=1,padx=10, pady=10)
-        choix1 = Button(self.information,text="Mode 1",background=self.color,foreground="White")
+        choix1 = Checkbutton(self.information,text="Mode 1",background=self.color,foreground="White")
         choix1.grid(row=3,column=2,padx=10, pady=10)
         choix2 = Checkbutton(self.information,text="Mode 2",background=self.color,foreground="White")
         choix2.grid(row=4,column=2,padx=10, pady=10)
         choix3 = Checkbutton(self.information,text="Mode 3",background=self.color,foreground="White")
         choix3.grid(row=5,column=2,padx=10, pady=10)
+
+        buttonDeco = Button(self.information, text= "Deconnexion",font=("Courrier",18),bg="#FFCCFF",fg="#FF0080",width=30,command=self.login())
+        buttonDeco.grid(row=8,column=2,padx=10, pady=10)
 
         self.information.place(relx=.45,rely=.5,anchor=CENTER)
 

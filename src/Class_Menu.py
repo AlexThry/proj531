@@ -1,4 +1,5 @@
 from src.Class_Database import *
+from src.Class_Quizz import *
 
 class Menu:
 	def __init__(self) -> None:
@@ -35,7 +36,14 @@ class Menu:
 						print("5. Fonctionnalités administrateur")
 					rep = input("Faites votre choix \n")
 
-					if rep == "3":
+					if rep == "1":
+						quizz = Quizz()
+						quizz.execute(conn, database)
+
+					elif rep == "2":
+						pass
+
+					elif rep == "3":
 						game.deconnexion()
 
 					elif rep == "4":

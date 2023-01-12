@@ -111,7 +111,7 @@ class Database:
 		quizzs = curs.execute("SELECT * FROM Quizz").fetchall()
 		if len(quizzs) > 0:
 			for i in range(len(quizzs)):
-				print(f"{i+1}. {quizzs[i][1]}")
+				print(f"{i+1}. {quizzs[i][1]}, theme : {quizzs[i][2]}")
 			choix = input("choississez le quizz que vous souhaitez voir\n")
 			if int(choix)-1 in range(len(quizzs)):
 				idQuizz = quizzs[int(choix)-1][0]
@@ -120,6 +120,33 @@ class Database:
 					print(item[0])
 			else:
 				print("Ce n'est pas un choix correct")
+
+	def choix_quizz(self, conn):
+		"""Permet à l'utilisateur de choisir un quizz parmis les quizz existants
+
+		Args:
+			conn (conection): 
+
+		Returns:
+			int: id du quizz choisis (bdd)
+		"""
+		curs = conn.cursor()
+		quizzs = curs.execute("SELECT * FROM Quizz").fetchall()
+		if len(quizzs) > 0:
+			for i in range(len(quizzs)):
+				print(f"{i+1}. {quizzs[i][1]}")
+			choix = input("choississez le quizz auquel vous souhaitez jouer\n")
+		if int(choix)-1 in range(len(quizzs)):
+			idQuizz = quizzs[int(choix)-1][0]
+			return idQuizz
+
+		
+		
+
+	def recuperer_quizz(self, id_quizz, conn):
+		curs = conn.cursor()
+		quizz = curs.execute(f"SELECT * FROM appartient NATURAL JOIN Question WHERE idQuizz = {id_quizz}").fetchall()
+		return quizz
 
 	def recuperer_sauvegarde(self):
 		pass

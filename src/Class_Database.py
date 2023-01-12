@@ -171,7 +171,13 @@ class Database:
             f"SELECT * FROM appartient NATURAL JOIN Question WHERE idQuizz = {id_quizz}").fetchall()
         return quizz
 
-    def get_historique(self, login, conn):
+    def get_historique(self, login, conn) -> None:
+        """Affiche l'historique
+
+        Args:
+            login (str): nom de l'utilisateur
+            conn (connexion): relie la database
+        """
         curs = conn.cursor()
         id_user = (curs.execute(
             f"SELECT idUtilisateur FROM Utilisateur WHERE nom = '{login}'").fetchall())[0][0]
@@ -181,7 +187,15 @@ class Database:
             print(
                 f"########## HISTORIQUE ##########\nNom du Zziuq : {historique[item][1]}\nScore du joueur : {historique[item][0]}")
 
-    def add_history(self, login, quizz_name, score, conn):
+    def add_history(self, login, quizz_name, score, conn) -> None:
+        """permet de mettre à jour l'historique de l'utilisateur
+
+        Args:
+            login (str): nom de l'utilisateur
+            quizz_name (str): nom du quizz à mettre à jour
+            score (int): score du joueur
+            conn (connexion): relie la database
+        """
         curs = conn.cursor()
         id_user = curs.execute(
             f"SELECT idUtilisateur FROM Utilisateur WHERE nom = '{login}'").fetchall()[0][0]

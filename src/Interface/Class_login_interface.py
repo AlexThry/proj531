@@ -1,5 +1,4 @@
 from tkinter import *
-from tkinter import messagebox
 
 class Class_login_interface:
     def __init__(self):
@@ -12,35 +11,55 @@ class Class_login_interface:
         
         """window.iconbitmap("ADD LOGO")""" 
         
-        self.color = "White"
+        self.color = "#6666FF"
         """a changer"""
 
         self.window.config(background = self.color) 
         
         #Creation de frame principal
         self.frame = Frame(self.window,bg =self.color)
-        self.frame.pack(fill="both",expand=False)
+        self.frame.pack(fill="both",expand=True)
         
         #Creation user image
-        self.image_utilisateur = Frame(self.frame,bg =self.color)
+        '''self.image_logo= Frame(self.frame,bg =self.color)
+        logo = PhotoImage(file="loginIcon.png")
+        label_logo = Label(self.image_logo,image=logo)
+        label_logo.pack()
+        self.image_logo.pack(fill="x",pady=10)'''
         
         #Creation login info
         self.information = Frame(self.frame,bg =self.color)
         
-        label_type = Label(self.information,text = "Utilisateur",font=("Courrier",18),bg="Black",fg=self.color)
-        label_type.place(anchor = CENTER, relx = .5, rely = .5)
-        self.information.pack(fill="x",pady=10)
+        label_utilisateur = Label(self.information,text = "Nom d'utilisateur :",font=("Courrier",18),bg=self.color,fg="White")
+        label_utilisateur.grid(row=0,column=2,padx=10, pady=10)
+        
+        self.label1 = Entry(self.information,bd=2)
+        self.label1.grid(row=0,column=3,padx=10, pady=10)
+        
+        label_MP = Label(self.information,text = "Mot de Passe :",font=("Courrier",18),bg=self.color,fg="White")
+        label_MP.grid(row=1,column=2,padx=10, pady=10)
+        
+        self.label2 = Entry(self.information,bd=2)
+        self.label2.grid(row=1,column=3,padx=10, pady=10)
+        
+        label_admin = Label(self.information,text = "Mot de passe administrateur :",font=("Courrier",18),bg=self.color,fg="White")
+        label_admin.grid(row=2,column=2,padx=10, pady=10)
+        
+        self.label3 = Entry(self.information,bd=2)
+        self.label3.grid(row=2,column=3,padx=10, pady=10)
+        
+        self.information.place(relx=.5,rely=.6,anchor=CENTER)
         
         #Creation btns
         self.boutons  = Frame(self.frame,bg =self.color)
-        button_create = Button (self.boutons, text="Create Utilisateur",font=("Courrier",18),bg="Black",fg=self.color,width=30,command=self.login())
+        
+        button_create = Button (self.boutons, text="CONNEXION",font=("Courrier",18),bg="#FFCCFF",fg="#FF0080",width=30,command=self.login())
         button_create.grid(row=3,column=1,padx=20,pady=30)
         
-        button_revenir = Button (self.boutons, text="Revenir",font=("Courrier",18),bg="Black",fg=self.color,width=30)
-        #button_revenir = Button (self.frame, text=text,font=("Courrier",18),bg="white",fg=self.color,command=)
+        button_revenir = Button (self.boutons, text="INSCRIPTION",font=("Courrier",18),bg="#FFCCFF",fg="#FF0080",width=30)
         button_revenir.grid(row=3,column=2,padx=20,pady=30)
         
-        self.boutons.pack()
+        self.boutons.place(relx=.5,rely=.8,anchor=CENTER)
         
     def set_image(self,text):
         pass
@@ -54,6 +73,7 @@ class Class_login_interface:
         elif password != " " and username != " ":
             messagebox.showinfo( "", "login suces")'''
         pass
+    
     def afficher(self):
         #afficher
         self.window.mainloop()

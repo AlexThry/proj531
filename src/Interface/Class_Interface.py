@@ -11,9 +11,10 @@ class Interface_quizz:
         self.window.geometry ("1080x720")
         self.window.resizable(False,False)
         
-        """window.iconbitmap("ADD LOGO")""" 
+        #window.iconbitmap("ADD LOGO)
         
-        self.color = "red"
+        self.color = "#6666FF"
+        self.color_text = "#FF0080"
         """a changer"""
 
         self.window.config(background = self.color) 
@@ -41,30 +42,30 @@ class Interface_quizz:
         self.window.mainloop()
         
     def create_btn(self,text,column):
-        button = Button (self.answer_frame, text=text,font=("Courrier",18),bg="white",fg=self.color,width=30)
+        button = Button (self.answer_frame, text=text,font=("Courrier",18),bg="white",fg=self.color_text ,width=30)
         #button = Button (self.frame, text=text,font=("Courrier",18),bg="white",fg=self.color,command=)
         button.grid(row=0,column=column,padx=20,pady=30)
         self.answer_frame.pack()
         
     def create_question(self,text):
-        label_question = Label(self.question_frame,text = text,font=("Courrier",18),bg="white",fg=self.color,height=10)
+        label_question = Label(self.question_frame,text = text,font=("Courrier",18),bg="white",fg=self.color_text ,height=10)
         label_question.pack(fill="x")
         self.question_frame .pack(fill="x")
         
     def type_jeu(self,text):
-        label_type = Label(self.top_frame,text = text,font=("Courrier",18),bg="white",fg=self.color)
+        label_type = Label(self.top_frame,text = text,font=("Courrier",18),bg=self.color,fg="white")
         label_type.place(anchor = CENTER, relx = .5, rely = .5)
         self.top_frame.pack(fill="x",pady=10)
         
     def score (self,score):
-        label_score = Label(self.top_frame,text = f"Score: {score}",font=("Courrier",16),bg="white",fg=self.color)
+        label_score = Label(self.top_frame,text = f"Score: {score}",font=("Courrier",16),bg=self.color,fg="white")
         label_score.place(anchor = W, relx = .8, rely = .25)
         self.top_frame.pack(fill="x",pady=10)
     
     def nombre_question(self,nombre,nombre_total=None):
         if nombre_total != None:
             text = f"Question {nombre}/{nombre_total}"
-            label_nombre_question = Label(self.top_frame,text = text,font=("Courrier",16),bg="white",fg=self.color)
+            label_nombre_question = Label(self.top_frame,text = text,font=("Courrier",16),bg=self.color,fg="white")
             label_nombre_question.place(anchor = W, relx = .8, rely = .75)
             self.top_frame.pack(fill="x",pady=10)
         else:
@@ -74,7 +75,7 @@ class Interface_quizz:
             self.top_frame.pack(fill="x",pady=10)
         
     def time (self,time):
-        label_score = Label(self.top_frame,text = time,font=("Courrier",16),bg="white",fg=self.color)
+        label_score = Label(self.top_frame,text = time,font=("Courrier",16),bg=self.color,fg="white")
         label_score.place(anchor = W, relx = .15, rely = .5)
         self.top_frame.pack(fill="x",pady=10)
         
@@ -84,7 +85,7 @@ if __name__ =="__main__":
     window.create_question("Question long")
     window.create_btn("Reponse 1",0)
     window.create_btn("Reponse 2",1)
-    window.type_jeu("Contre le temp")
+    window.type_jeu("Contre le temlighblhbp")
     window.score("1200")
     window.nombre_question(1,10)
     window.time("10:35")

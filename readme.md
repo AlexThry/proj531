@@ -13,7 +13,7 @@ git clone https://github.com/AlexThry/proj531
 ```
 Installez les librairies nécessaires au fonctionnement du programme
 ```
-pip install tkinter
+pip install tkinter 
 pip intall sqlite3
 ```
 

@@ -48,7 +48,7 @@ class Class_menu:
 
         label_MJ = Label(self.information,text = "Modes de Jeu:",font=("Courrier",18),bg=self.color,fg="White")
         label_MJ.grid(row=3,column=1,padx=10, pady=10)
-        choix1 = Button(self.information,text="Mode 1",background=self.color,foreground="White")
+        choix1 = Checkbutton(self.information,text="Mode 1",background=self.color,foreground="White")
         choix1.grid(row=3,column=2,padx=10, pady=10)
         choix2 = Checkbutton(self.information,text="Mode 2",background=self.color,foreground="White")
         choix2.grid(row=4,column=2,padx=10, pady=10)

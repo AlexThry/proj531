@@ -29,29 +29,33 @@ class Class_menu:
         #Creation login info
         self.information = Frame(self.frame,bg =self.color)
         
-        label_titre = Label(self.information,text = "ZZuiQ",font=("Courrier",30),bg=self.color,fg="White")
+        label_titre = Label(self.information,text = "ZZuiQ",font=("Courrier",80),bg=self.color,fg="White")
         label_titre.grid(row=0,column=2,padx=10)
+
+        buttonQuestion = Button(self.information, text= "Ajouter une question",font=("Courrier",18),bg="#FFCCFF",fg="#FF0080",width=30,command=self.login())
+        buttonQuestion.grid(row=1,column=2,padx=10, pady=10)
+
+        buttonQuestion = Button(self.information, text= "Quizz",font=("Courrier",18),bg="#FFCCFF",fg="#FF0080",width=30,command=self.login())
+        buttonQuestion.grid(row=2,column=2,padx=10, pady=10)
+
         label_histo = Label(self.information,text = "Historique:",font=("Courrier",18),bg=self.color,fg="White")
-        label_histo.grid(row=1,column=2,padx=10, pady=10)
-        liste_Histo = Listbox(self.information,background=self.color,foreground="White")
+        label_histo.grid(row=6,column=1,padx=10, pady=10)
+        liste_Histo = Listbox(self.information,background=self.color,foreground="White",bd=0)
         liste_Histo.insert(1, "01/01/23 16:34")
         liste_Histo.insert(2, "03/01/23 10:11")
         liste_Histo.insert(3, "14/01/23 20:32")
-        liste_Histo.grid(row=2,column=2,padx=10, pady=10)
-
-        buttonQuestion = Button(self.information, text= "Ajouter une question",font=("Courrier",18),bg="#FFCCFF",fg="#FF0080",width=30,command=self.login())
-        buttonQuestion.grid(row=3,column=2,padx=10, pady=10)
+        liste_Histo.grid(row=7,column=2,padx=10, pady=10)
 
         label_MJ = Label(self.information,text = "Modes de Jeu:",font=("Courrier",18),bg=self.color,fg="White")
-        label_MJ.grid(row=4,column=2,padx=10, pady=10)
-        choix1 = Checkbutton(self.information,text="Mode 1",background=self.color,foreground="White")
-        choix1.grid(row=5,column=2,padx=10, pady=10)
+        label_MJ.grid(row=3,column=1,padx=10, pady=10)
+        choix1 = Button(self.information,text="Mode 1",background=self.color,foreground="White")
+        choix1.grid(row=3,column=2,padx=10, pady=10)
         choix2 = Checkbutton(self.information,text="Mode 2",background=self.color,foreground="White")
-        choix2.grid(row=6,column=2,padx=10, pady=10)
+        choix2.grid(row=4,column=2,padx=10, pady=10)
         choix3 = Checkbutton(self.information,text="Mode 3",background=self.color,foreground="White")
-        choix3.grid(row=7,column=2,padx=10, pady=10)
+        choix3.grid(row=5,column=2,padx=10, pady=10)
 
-        self.information.place(relx=.5,rely=.6,anchor=CENTER)
+        self.information.place(relx=.45,rely=.5,anchor=CENTER)
 
     def login (self):
         '''username = label1.get()

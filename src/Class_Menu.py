@@ -23,7 +23,7 @@ class Menu:
 
 
 			elif rep == "2":
-				database.creer_compte(conn)
+				database.creer_compte(conn, game)
 
 
 			elif rep == "1":

@@ -8,6 +8,8 @@ class Jeu:
 		self.is_admin = False
 		self.user = None
 
+	def get_user(self):
+		return self.user
 
 	def get_is_admin(self):
 		return self.is_admin

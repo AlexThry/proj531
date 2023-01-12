@@ -105,37 +105,6 @@ class Database:
         curs = conn.cursor()
         ajouter = True
 
-        list_quizz = curs.execute("SELECT * FROM Quizz").fetchall()
-        for i in range(len(list_quizz)):
-            print(f"{i+1}.{list_quizz[i][1]}")
-        quizz = int(
-            input("Choissiez le Quizz auquel ajouter des quetions ou 'q' pour quitter\n"))-1
-
-        print(len(list_quizz))
-        if quizz == "q":
-            ajouter = False
-        elif quizz not in range(len(list_quizz)):
-            print("Vous n'avez pas choisis un quizz valide")
-            ajouter = False
-        list_question = curs.execute("SELECT * FROM Question").fetchall()
-
-        while ajouter:
-            for i in range(len(list_question)):
-                print(f"{i+1}.{list_question[i][1]}")
-            question = input(
-                "Choississez la question à ajouter ou tapez 'q' pour quitter\n")
-            if question == "q":
-                ajouter = False
-            elif int(question)-1 in range(len(list_question)):
-                idQuizz = list_quizz[quizz][0]
-                idQuestion = list_question[int(question)-1][0]
-                curs.execute(
-                    "INSERT INTO appartient (idQuizz, idQuestion) VALUES (?, ?)", (idQuizz, idQuestion))
-            else:
-                print("Veuillez choisir une question valide")
-
-        conn.commit()
-
     def afficher_questions(self, conn) -> None:
         """permet d'afficher les questions à l'utilisateur
 
@@ -202,29 +171,26 @@ class Database:
             f"SELECT * FROM appartient NATURAL JOIN Question WHERE idQuizz = {id_quizz}").fetchall()
         return quizz
 
-    def get_historique(self, login, conn) -> None:
-        """récupère l'historique de l'utilisateur voulu
-
-        Args:
-            login (str): nom d'utilisateur dans la base de donnés
-            conn (connexion): correspond 
-        """
+    def get_historique(self, login, conn):
         curs = conn.cursor()
         id_user = (curs.execute(
             f"SELECT idUtilisateur FROM Utilisateur WHERE nom = '{login}'").fetchall())[0][0]
-        print(id_user)
         historique = (curs.execute(
-            f"SELECT mode, score FROM HISTORIQUE WHERE idUtilisateur = '{id_user}'").fetchall())
-        print(historique)
+            f"SELECT mode, score FROM Historique WHERE idUtilisateur = '{id_user}'").fetchall())
+        for item in range(len(historique)):
+            print(
+                f"########## HISTORIQUE ##########\nNom du Zziuq : {historique[item][1]}\nScore du joueur : {historique[item][0]}")
 
-    def edit_history(self, login, quizz_name, score, conn):
-        id_user = self.execute(
-            f'SELECT id_Utilisateur FROM Utilisateur WHERE nom = {login}')
-        insert_into_history = self.execute(
-            'INSERT INTO HISTORIQUE (idUtilisateur,score,mode) VALUES (?,?,?)', (id_user, quizz_name, score))
+    def add_history(self, login, quizz_name, score, conn):
+        curs = conn.cursor()
+        id_user = curs.execute(
+            f"SELECT idUtilisateur FROM Utilisateur WHERE nom = '{login}'").fetchall()[0][0]
+        curs.execute(
+            "INSERT INTO Historique (idUtilisateur, score, mode) VALUES (?,?,?)", (id_user, quizz_name, score))
+        conn.commit()
 
 
-if __name__ == '__main__':
-    Baba = Database()
-    user = str(input('un user please'))
-    Baba.get_historique(user, sql.connect("database.db"))
+# if __name__ == '__main__':
+#     Baba = Database()
+#     user = str(input('un user please'))
+#     Baba.get_historique(user, sql.connect("database.db"))

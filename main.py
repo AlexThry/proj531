@@ -6,6 +6,7 @@ from src.Class_Sauvegarde import *
 from src.Class_Utilisateur import *
 from src.Class_Menu import *
 from src.Class_Database import *
+# from src.Interface.Class_Interface import *
 
 if __name__ == "__main__":
 	########## INITIALISATION #########
@@ -15,7 +16,7 @@ if __name__ == "__main__":
 	curs.execute(
 		"CREATE TABLE IF NOT EXISTS Quizz (idQuizz INTEGER PRIMARY KEY AUTOINCREMENT, nom VARCHAR, theme VARCHAR)")
 	curs.execute("CREATE TABLE IF NOT EXISTS Question (idQuestion INTEGER PRIMARY KEY AUTOINCREMENT, question TEXT, reponse1 TEXT, reponse2 TEXT, bonne_reponse TEXT)")
-	curs.execute("CREATE TABLE IF NOT EXISTS HISTORIQUE (idHisto INTEGER PRIMARY KEY AUTOINCREMENT, score INTEGER, mode INTEGER, idUtilisateur INTEGER REFERENCES Utilisateur (idUtilisateur))")
+	curs.execute("CREATE TABLE IF NOT EXISTS Historique(idHisto INTEGER PRIMARY KEY AUTOINCREMENT, score INTEGER, mode INTEGER, idUtilisateur INTEGER REFERENCES Utilisateur (idUtilisateur))")
 	curs.execute("CREATE TABLE IF NOT EXISTS appartient (idQuizz INTEGER REFERENCES Quizz (idQuizz), idQuestion INTEGER REFERENCES Question (idQuestion), PRIMARY KEY(idQuizz, idQuestion))")
 
 	########## Création du Jeu ##########
@@ -27,5 +28,10 @@ if __name__ == "__main__":
 	########## MENU ##########
 
 	menu.execute(game, conn, database)
+
+	# q = Quizz()
+	# quizz = q.melange_quizz(database.recuperer_quizz(database.choix_quizz(conn), conn))
+	# print(quizz)
+	# q.question_interface(quizz)
 
 	

@@ -2,6 +2,7 @@ from tkinter import *
 import sys
 from src.Class_Jeu import *
 from src.Class_Database import *
+from src.Interface_menu import *
 import sqlite3
 import os
 import time
@@ -11,6 +12,8 @@ class Interface_login:
 	def __init__(self):
 		self.game = Jeu()
 		self.window = Tk()
+		self.window.geometry('+150+150')
+		self.is_connected = False
 
 		# personnaliser fenettre
 		self.window.title("ZZiuQ")
@@ -95,10 +98,13 @@ class Interface_login:
 				self.is_connected = True
 				self.user = username
 				database.set_user(username)
+
+				self.window.destroy()
+				window_menu = Class_menu()
+				window_menu.afficher()
 				
 				if user[3] == "TRUE":
 					self.is_admin = True
-				self.window.destroy()
 			else:
 				self.color = "#F93106"
 				time.sleep(0.5)
@@ -134,8 +140,3 @@ class Interface_login:
 		# afficher
 		self.window.mainloop()
 
-
-if __name__ == "__main__":
-	conn = sqlite3.connect(os.path.join("..", "database.db"))
-	window = Class_login_interface()
-	window.afficher()

@@ -61,7 +61,7 @@ class Database:
         else:
             print("Vous n'avez pas donné le bon mot de passe")
 
-    def creer_question(self, conn) -> None:
+    def creer_question(self, conn ) -> None:
         """permet de créer une question
 
         Args:
@@ -70,6 +70,25 @@ class Database:
         question = input("Rentrez votre question :\n")
         reponse = input("Rentrez la bonne réponse : \n")
         reponse2 = input("rentrez une mauvaise réponse : \n")
+        values = [question, None, None, reponse]
+        pos = random.randint(1, 2)
+        if pos == 1:
+            values[1] = reponse
+            values[2] = reponse2
+        else:
+            values[1] = reponse2
+            values[2] = reponse
+        curs = conn.cursor()
+        curs.execute(
+            f"INSERT INTO Question(question, reponse1, reponse2, bonne_reponse) VALUES(?, ?, ?, ?)", tuple(values))
+        conn.commit()
+        
+    def creer_question_Interface(self, conn , question , reponse , reponse2) -> None:
+        """permet de créer une question
+
+        Args:
+            conn (connexion): connexion à la database
+        """
         values = [question, None, None, reponse]
         pos = random.randint(1, 2)
         if pos == 1:

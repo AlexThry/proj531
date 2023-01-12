@@ -38,10 +38,10 @@ class Menu:
 
 					if rep == "1":
 						quizz = Quizz()
-						quizz.execute(conn, database)
+						quizz.execute(conn, database, game.get_user())
 
 					elif rep == "2":
-						pass
+						database.get_historique(game.get_user(), conn)
 
 					elif rep == "3":
 						game.deconnexion()

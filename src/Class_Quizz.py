@@ -8,19 +8,21 @@ class Quizz:
 	def __init__(self):
 		self.score = 0
 
-	def execute(self, conn, database):
+	def execute(self, conn, database, login):
 		curs = conn.cursor()
 		idQuizz = database.choix_quizz(conn)
+		self.nom = curs.execute(f"SELECT nom FROM Quizz WHERE idQuizz = '{idQuizz}'").fetchall()[0][0]
 		quizz = database.recuperer_quizz(idQuizz, conn)
 		quizz_melange = self.melange_quizz(quizz)
-		self.repondre(quizz_melange)
+		self.repondre(quizz_melange, login, conn)
 
 	def melange_quizz(self, quizz):
 		random.shuffle(quizz)
 		return quizz
 
-	def repondre(self, quizz):
+	def repondre(self, quizz, login, conn):
 		self.score = 0
+		db = Database()
 		for i in range(len(quizz)):
 			tuple_question = quizz[i]
 			question = tuple_question[2]
@@ -38,6 +40,7 @@ class Quizz:
 			else:
 				print("Mauvaise réponse !\n")
 		print(f"Votre score est de {self.score}")
+		db.add_history(login, self.nom, self.score, conn)
 
 	def question_interface(self, quizz):
 		i=0

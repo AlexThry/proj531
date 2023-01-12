@@ -77,7 +77,6 @@ class Interface_login:
 
 
 	def login(self, conn=sqlite3.connect("database.db")):
-		self.window.quit
 		username = self.label1.get()
 		password = self.label2.get()
 		self.label1.delete(0, END)
@@ -99,6 +98,7 @@ class Interface_login:
 				
 				if user[3] == "TRUE":
 					self.is_admin = True
+				self.window.destroy()
 			else:
 				self.color = "#F93106"
 				time.sleep(0.5)

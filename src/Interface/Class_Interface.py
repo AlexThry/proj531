@@ -1,7 +1,7 @@
 from tkinter import * 
-from ..Class_Quizz import *
-from ..Class_Database import *
-from ..Class_Jeu import *
+#from ..Class_Quizz import *
+#from ..Class_Database import *
+#from ..Class_Jeu import *
 import time 
 
 class Interface_quizz:
@@ -44,12 +44,19 @@ class Interface_quizz:
         #afficher
         self.window.mainloop()
         
-    def create_btn(self,text,column):
-        button = Button (self.answer_frame, text=text,font=("Courrier",18),bg="white",fg=self.color_text ,width=30)
-        #button = Button (self.frame, text=text,font=("Courrier",18),bg="white",fg=self.color,command=)
-        button.grid(row=0,column=column,padx=20,pady=30)
+    def create_btn(self,text1,text2):
+        self.button1 = Button (self.answer_frame, text=text1,font=("Courrier",18),bg="white",fg=self.color_text ,width=30)
+        self.button1.grid(row=0,column=0,padx=20,pady=30)
         self.answer_frame.pack()
         
+        self.button2 = Button (self.answer_frame, text=text2,font=("Courrier",18),bg="white",fg=self.color_text ,width=30)
+        self.button2.grid(row=0,column=1,padx=20,pady=30)
+        self.answer_frame.pack()
+        
+        self.button1.configure(command=lambda btn=self.button1: self.OnClick(btn))
+        self.button2.configure(command=lambda btn=self.button2: self.OnClick(btn))
+        
+        self.click=False        
     def create_question(self,text):
         label_question = Label(self.question_frame,text = text,font=("Courrier",18),bg="white",fg=self.color_text ,height=10)
         label_question.pack(fill="x")
@@ -82,6 +89,16 @@ class Interface_quizz:
         label_score.place(anchor = W, relx = .15, rely = .5)
         self.top_frame.pack(fill="x",pady=10)
         
+    def OnClick(self, btn):
+        self.text = btn.cget("text")
+        self.click = True
+
+    def recu_reponse(self):
+        if self.click:
+            return self.text
+            self.text=None
+        else:
+            return None
         
     def execute(qelf, quizz):
         continuer = True
@@ -89,10 +106,21 @@ class Interface_quizz:
         while continuer:
             
             window.create_question("Question long")
-            window.create_btn("Reponse 1",0)
-            window.create_btn("Reponse 2",1)
+            window.create_btn("Reponse 1","Reponse 2")
             window.type_jeu("Contre le temlighblhbp")
             window.score("1200")
             window.nombre_question(1,10)
             window.time("10:35")
             window.afficher()
+            
+            print(window.recu_reponse()) #None s'il n'y a pas de reponse 
+            
+if __name__ == "__main__":
+    window = Interface_quizz()
+    window.create_question("Question long")
+    window.create_btn("Reponse 1","Reponse 2")
+    window.type_jeu("Contre le temps")
+    window.score("1200")
+    window.nombre_question(1,10)
+    window.time("10:35")
+    window.afficher()

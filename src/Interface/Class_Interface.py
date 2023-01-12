@@ -100,7 +100,7 @@ class Interface_quizz:
         else:
             return None
         
-    def execute(qelf, quizz):
+    def execute(self, quizz):
         continuer = True
         window = Interface_quizz()
         while continuer:

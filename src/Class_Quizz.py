@@ -1,4 +1,5 @@
 import src.Class_Database as db
+from src.Interface.Class_Interface import *
 import random
 
 class Quizz:
@@ -11,8 +12,6 @@ class Quizz:
 		quizz = database.recuperer_quizz(idQuizz, conn)
 		quizz_melange = self.melange_quizz(quizz)
 		self.repondre(quizz_melange)
-
-
 
 	def melange_quizz(self, quizz):
 		random.shuffle(quizz)
@@ -37,3 +36,9 @@ class Quizz:
 			else:
 				print("Mauvaise réponse !\n")
 		print(f"Votre score est de {self.score}")
+
+	def question_interface(self, conn, database):
+		window = Interface_quizz()
+		continuer = True
+		while continuer:
+			window.create

@@ -1,4 +1,7 @@
 from tkinter import * 
+from ..Class_Quizz import *
+from ..Class_Database import *
+from ..Class_Jeu import *
 import time 
 
 class Interface_quizz:
@@ -80,13 +83,16 @@ class Interface_quizz:
         self.top_frame.pack(fill="x",pady=10)
         
         
-if __name__ =="__main__":
-    window = Interface_quizz()
-    window.create_question("Question long")
-    window.create_btn("Reponse 1",0)
-    window.create_btn("Reponse 2",1)
-    window.type_jeu("Contre le temlighblhbp")
-    window.score("1200")
-    window.nombre_question(1,10)
-    window.time("10:35")
-    window.afficher()
+    def execute(qelf, quizz):
+        continuer = True
+        window = Interface_quizz()
+        while continuer:
+            
+            window.create_question("Question long")
+            window.create_btn("Reponse 1",0)
+            window.create_btn("Reponse 2",1)
+            window.type_jeu("Contre le temlighblhbp")
+            window.score("1200")
+            window.nombre_question(1,10)
+            window.time("10:35")
+            window.afficher()

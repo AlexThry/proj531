@@ -21,11 +21,11 @@ class Class_login_interface:
         self.frame.pack(fill="both",expand=True)
         
         #Creation user image
-        '''self.image_logo= Frame(self.frame,bg =self.color)
-        logo = PhotoImage(file="loginIcon.png")
-        label_logo = Label(self.image_logo,image=logo)
+        self.image_logo= Frame(self.frame,bg =self.color)
+        logo = PhotoImage(file="loginIcon.jpg")
+        label_logo = Label(self.image_logo,image=logo,height=300,width=300)
         label_logo.pack()
-        self.image_logo.pack(fill="x",pady=10)'''
+        self.image_logo.pack(fill="x",pady=10)
         
         #Creation login info
         self.information = Frame(self.frame,bg =self.color)
@@ -48,7 +48,7 @@ class Class_login_interface:
         self.label3 = Entry(self.information,bd=2)
         self.label3.grid(row=2,column=3,padx=10, pady=10)
         
-        self.information.place(relx=.5,rely=.6,anchor=CENTER)
+        self.information.place(relx=.45,rely=.6,anchor=CENTER)
         
         #Creation btns
         self.boutons  = Frame(self.frame,bg =self.color)

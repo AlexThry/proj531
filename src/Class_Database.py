@@ -7,10 +7,21 @@ class Database:
     def __init__(self) -> None:
         return None
 
-    def set_user(self, user):
+    def set_user(self, user) -> None:
+        """permet d'établir l'utilisateur
+
+        Args:
+                user (string): utilisateur courant
+        """
         self.user = user
 
-    def creer_compte(self, conn, game):
+    def creer_compte(self, conn, game) -> None:
+        """permet de créer un compte administrateur ou utilisateur
+
+        Args:
+                conn (connexion): connexion à la database
+                game (Jeu): relie la fonction à la classe jeu pour obtenir la clé qui identifie un administrateur
+        """
         curs = conn.cursor()
         login = input("Login : \n")
         if not (curs.execute(f"SELECT nom FROM Utilisateur WHERE nom = '{login}'").fetchall()):
@@ -31,7 +42,13 @@ class Database:
         else:
             print("Cet utilisateur est déjà existant")
 
-    def supprimer_compte(self, conn, game):
+    def supprimer_compte(self, conn, game) -> None:
+        """permet de supprimer un compte administrateur ou utilisateur
+
+        Args:
+                conn (connexion): connexion à la database
+                game (Jeu): relie la fonction à la classe jeu pour obtenir la clé qui identifie un administrateur
+        """
         curs = conn.cursor()
         mdp = input("Veuillez taper votre mot de passe : \n")
         print(curs.execute(
@@ -44,7 +61,12 @@ class Database:
         else:
             print("Vous n'avez pas donné le bon mot de passe")
 
-    def creer_question(self, conn):
+    def creer_question(self, conn) -> None:
+        """permet de créer une question
+
+        Args:
+            conn (connexion): connexion à la database
+        """
         question = input("Rentrez votre question :\n")
         reponse = input("Rentrez la bonne réponse : \n")
         reponse2 = input("rentrez une mauvaise réponse : \n")
@@ -61,7 +83,12 @@ class Database:
             f"INSERT INTO Question(question, reponse1, reponse2, bonne_reponse) VALUES(?, ?, ?, ?)", tuple(values))
         conn.commit()
 
-    def creer_quizz(self, conn):
+    def creer_quizz(self, conn) -> None:
+        """permet de créer un quizz
+
+        Args:
+            conn (connexion): connexion à la database
+        """
         nom = input("Nom du quizz : \n")
         theme = input("Theme du quizz : \n")
         curs = conn.cursor()
@@ -69,7 +96,12 @@ class Database:
             "INSERT INTO Quizz (nom, theme) VALUES (?, ?)", (nom, theme))
         conn.commit()
 
-    def ajouter_questions_quizz(self, conn):
+    def ajouter_questions_quizz(self, conn) -> None:
+        """permet d'ajouter une question dans un quizz
+
+        Args:
+            conn (connexion): connexion à la database
+        """
         curs = conn.cursor()
         ajouter = True
 
@@ -104,13 +136,23 @@ class Database:
 
         conn.commit()
 
-    def afficher_questions(self, conn):
+    def afficher_questions(self, conn) -> None:
+        """permet d'afficher les questions à l'utilisateur
+
+        Args:
+            conn (connexion): connexion à la database
+        """
         curs = conn.cursor()
         questions = curs.execute("SELECT * FROM Question").fetchall()
         for item in questions:
             print(item[1])
 
-    def afficher_quizzs(self, conn):
+    def afficher_quizzs(self, conn) -> None:
+        """affiche le quizz à l'utilisateur
+
+        Args:
+            conn (_type_): _description_
+        """
         curs = conn.cursor()
         quizzs = curs.execute("SELECT * FROM Quizz").fetchall()
         if len(quizzs) > 0:
@@ -126,14 +168,14 @@ class Database:
             else:
                 print("Ce n'est pas un choix correct")
 
-    def choix_quizz(self, conn):
+    def choix_quizz(self, conn) -> int:
         """Permet à l'utilisateur de choisir un quizz parmis les quizz existants
 
         Args:
-                conn (conection):
+                        conn (connection): permet de se connecter à la base de donnés
 
         Returns:
-                int: id du quizz choisis (bdd)
+                        int: id du quizz choisis (bdd)
         """
         curs = conn.cursor()
         quizzs = curs.execute("SELECT * FROM Quizz").fetchall()
@@ -145,16 +187,28 @@ class Database:
             idQuizz = quizzs[int(choix)-1][0]
             return idQuizz
 
-    def recuperer_quizz(self, id_quizz, conn):
+    def recuperer_quizz(self, id_quizz, conn) -> str:
+        """permet de récupérer le quizz correspondant à l'id voulu
+
+        Args:
+            id_quizz (int): l'id du quizz dans la base de donnés
+            conn (connexion): connexion à la database
+
+        Returns:
+            str: le nom du quizz qui correspond à l'id en entré
+        """
         curs = conn.cursor()
         quizz = curs.execute(
             f"SELECT * FROM appartient NATURAL JOIN Question WHERE idQuizz = {id_quizz}").fetchall()
         return quizz
 
-    def recuperer_sauvegarde(self):
-        pass
+    def get_historique(self, login, conn) -> None:
+        """récupère l'historique de l'utilisateur voulu
 
-    def get_historique(self, login, conn):
+        Args:
+            login (str): nom d'utilisateur dans la base de donnés
+            conn (connexion): correspond 
+        """
         curs = conn.cursor()
         id_user = (curs.execute(
             f"SELECT idUtilisateur FROM Utilisateur WHERE nom = '{login}'").fetchall())[0][0]

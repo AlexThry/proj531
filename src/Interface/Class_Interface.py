@@ -83,7 +83,7 @@ class Interface_quizz:
         self.top_frame.pack(fill="x",pady=10)
         
         
-    def execute(qelf, quizz):
+    def execute(self, quizz):
         continuer = True
         window = Interface_quizz()
         while continuer:

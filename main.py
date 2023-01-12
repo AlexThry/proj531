@@ -6,6 +6,7 @@ from src.Class_Sauvegarde import *
 from src.Class_Utilisateur import *
 from src.Class_Menu import *
 from src.Class_Database import *
+from src.Interface.Class_Interface import *
 
 if __name__ == "__main__":
 	########## INITIALISATION #########
@@ -27,5 +28,10 @@ if __name__ == "__main__":
 	########## MENU ##########
 
 	menu.execute(game, conn, database)
+
+	# q = Quizz()
+	# quizz = q.melange_quizz(database.recuperer_quizz(database.choix_quizz(conn), conn))
+	# print(quizz)
+	# q.question_interface(quizz)
 
 	

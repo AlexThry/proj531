@@ -1,4 +1,10 @@
 from tkinter import *
+import sys
+sys.path.append("../")
+from src import Class_Jeu as JEU
+from src import Class_Database as DT
+import sqlite3
+import os
 
 class Class_login_interface:
     def __init__(self):
@@ -36,7 +42,7 @@ class Class_login_interface:
         self.label2 = Entry(self.information,bd=2,width=100)
         self.label2.grid(row=3,column=0,padx=10, pady=10)
         
-        label_Reponse_not_correct = Label(self.information,text = "rentrez une mauvaise réponse :",font=("Courrier",18),bg=self.color,fg="White")
+        label_Reponse_not_correct = Label(self.information,text = "Rentrez la mauvaise réponse :",font=("Courrier",18),bg=self.color,fg="White")
         label_Reponse_not_correct.grid(row=4,column=0,padx=10, pady=10)
         
         self.label3 = Entry(self.information,bd=2,width=100)
@@ -47,10 +53,10 @@ class Class_login_interface:
         #Creation btns
         self.boutons  = Frame(self.frame,bg =self.color)
         
-        button_create = Button (self.boutons, text="AJOUTER QUESTION",font=("Courrier",18),bg="#FFCCFF",fg="#FF0080",width=30,command=self.login())
+        button_create = Button (self.boutons, text="AJOUTER QUESTION",font=("Courrier",18),bg="#FFCCFF",fg="#FF0080",width=30,command=self.get_info)
         button_create.grid(row=3,column=1,padx=20,pady=30)
         
-        button_revenir = Button (self.boutons, text="REVENIR",font=("Courrier",18),bg="#FFCCFF",fg="#FF0080",width=30)
+        button_revenir = Button (self.boutons, text="REVENIR",font=("Courrier",18),bg="#FFCCFF",fg="#FF0080",width=30, command = self.window.destroy)
         button_revenir.grid(row=3,column=2,padx=20,pady=30)
         
         self.boutons.place(relx=.5,rely=.8,anchor=CENTER)
@@ -58,21 +64,23 @@ class Class_login_interface:
     def set_image(self,text):
         pass
     
-    def login (self):
-        '''username = label1.get()
-        password = label2.get()
+    def get_info (self):
+        question = self.label1.get()
+        reponse_correct = self.label2.get()
+        reponse_not_correct = self.label3.get()
         
-        if password == " " and username == " ":
-            messagebox.showinfo( "", "Espace vide non accepté")
-        elif password != " " and username != " ":
-            messagebox.showinfo( "", "login suces")'''
-        pass
-    
+        conn = sqlite3.connect( "database.db")
+        database = DT.Database()
+        database.creer_question_Interface(conn, question, reponse_correct, reponse_not_correct)        
+        print("ok")
+        self.window.destroy
+        
     def afficher(self):
         #afficher
         self.window.mainloop()
         
         
 if __name__ =="__main__":
+	
     window = Class_login_interface()
     window.afficher()

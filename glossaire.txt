@@ -1,1 +1,17 @@
 quizz : Un quizz est un jeu ou un test consistant à poser des questions à une personne ou un groupe de personnes pour évaluer leurs connaissances dans un domaine particulier. Les réponses peuvent être données sous forme de choix multiple ou de réponse libre. Les quizz peuvent être utilisés à des fins éducatives ou ludiques.
+
+Class_Database : La classe qui nous permet de faire des requêtes vers la base de données
+    exemple de méhtode
+    -creer_question(self, conn)->None:, cette méthode permet d'ajouter une question dans la base de données
+
+Class_Jeu : La classe qui nous permet de voir l'état actuel du joueur
+    exemple de méthode
+    -def connexion(self, curs, database) -> None:, méthode qui permet de se connecter
+
+Class_Menu : La classe qui permet de naviguer dans le menu
+    exemple de méthode
+    -def execute(self, game, conn, database)->None:, cette méthode permet de guider l'utilisateur et de lui permettre d'utiliser notre quizz dans son terminal
+
+Class_Quizz : La classe qui permet le bon fonctionnement du programme lorsque l'utilisateur démarre un quizz
+    exemple de méthode
+    -def repondre(self, quizz, login, conn) -> None:, cette méthode affiche la question ainsi que les réponses dans le terminal afin que l'utilisateur réponde

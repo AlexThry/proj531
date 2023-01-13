@@ -45,9 +45,7 @@ class Interface_Choix_Quizz:
 		database = DT.Database()
 		cpt = 0
 		
-		#quizz = database.recuperer_quizz(cpt,conn)
-		quizz=["jnsd","hjsd","jhsd","ohsdq"]
-		print(quizz)
+		quizz = database.recuperer_quizz(cpt,conn)
 		
 		for i in quizz:
 			buttonQuizz = Button(self.btns, text=i, font=(

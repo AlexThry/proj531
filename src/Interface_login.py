@@ -32,11 +32,12 @@ class Interface_login:
 		self.frame.pack(fill="both", expand=True)
 
 		# # Creation user image
-		# self.image_logo = Frame(self.frame, bg=self.color)
-		# logo = PhotoImage(file=os.path.join("src", "loginIcon.jpg"))
-		# label_logo = Label(self.image_logo, image=logo, height=300, width=300)
-		# label_logo.pack()
-		# self.image_logo.pack(fill="x", pady=10)
+		self.logo = Frame(self.frame, bg=self.color)
+
+		label_titre = Label(self.logo, text="ZZuiQ", font=("Courrier", 90), bg=self.color, fg="White")
+		label_titre.grid(row=0, column=2, padx=30)
+		
+		self.logo.place(relx=.5, rely=.3, anchor=CENTER)
 
 		# Creation login info
 		self.information = Frame(self.frame, bg=self.color)

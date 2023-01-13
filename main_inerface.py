@@ -1,6 +1,6 @@
 from src.Interface_login import *
 from src.Interface_creation_Question import *
-from src.Interface_quizz import *
+from Interface_Question import *
 from src.Interface_menu import *
 
 class Interface:

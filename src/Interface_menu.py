@@ -1,5 +1,5 @@
 from tkinter import *
-from src.Interface_login import *
+from src import Interface_login as IL
 
 
 class Class_menu:
@@ -75,8 +75,8 @@ class Class_menu:
 		self.information.place(relx=.45, rely=.5, anchor=CENTER)
 
 	def disconnect(self):
-		self.window.destroy
-		window_login = Interface_login()
+		self.window.destroy()
+		window_login = IL.Interface_login()
 		window_login.afficher()
 
 	def login(self):

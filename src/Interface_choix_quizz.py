@@ -45,18 +45,26 @@ class Interface_Choix_Quizz:
 		database = DT.Database()
 		cpt = 0
 		
-		print(database.recuperer_quizz(cpt,conn))
+		#quizz = database.recuperer_quizz(cpt,conn)
+		quizz=["jnsd","hjsd","jhsd","ohsdq"]
+		print(quizz)
+		
+		for i in quizz:
+			buttonQuizz = Button(self.btns, text=i, font=(
+				"Courrier", 18), bg="#FFCCFF", fg="#FF0080", width=20)
+			buttonQuizz.pack()
 				
-		while (database.recuperer_quizz(cpt,conn) == "[]"):
-			text = database.recuperer_quizz(cpt,conn)
+		self.btns.place(relx=.5, rely=.5, anchor=CENTER)
+		
+		self.revenir = Frame(self.frame, bg=self.color)
 
-			buttonTheme = Button(self.btns, text=text, font=(
-				"Courrier", 18), bg="#FFCCFF", fg="#FF0080", width=30)
-			buttonTheme.grid(row=cpt+1, column=2, padx=10, pady=10)
-			
-			cpt +=1
-			self.btns.place(relx=.5, rely=.5, anchor=CENTER)
-			
+		button_revenir = Button (self.revenir, text="REVENIR",font=("Courrier",18),bg="#FFCCFF",fg="#FF0080",width=30, command = self.window.destroy)
+		button_revenir.grid(row=3,column=2,padx=20,pady=30)
+		
+		self.revenir.place(relx=.5, rely=.9, anchor=CENTER)
+
+	def jqsldn(self):
+		pass
 				
 
 

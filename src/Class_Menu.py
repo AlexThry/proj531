@@ -6,7 +6,7 @@ class Menu:
     def __init__(self) -> None:
         return None
 
-    def execute(self, game, conn, database):
+    def execute(self, game, conn, database) -> None:
         """permet d'afficher le menu
 
         Args:

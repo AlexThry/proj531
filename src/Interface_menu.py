@@ -1,13 +1,15 @@
+import sqlite3
 from tkinter import *
 from src import Interface_login as IL
+from src import Interface_creation_Question as IQ
 
 
-class Class_menu:
-	def __init__(self):
+class Interfac_menu:
+	def __init__(self, login):
 		self.window = Tk()
-		self.window.geometry('+300+300')
+		self.window.geometry('+150+150')
 		self.deconnexion = False
-
+		self.login = login
 		# personnaliser fenettre
 		self.window.title("Menu")
 		self.window.geometry("1080x720")
@@ -38,11 +40,11 @@ class Class_menu:
 		label_titre.grid(row=0, column=2, padx=10)
 
 		buttonQuestion = Button(self.information, text="Ajouter une question", font=(
-			"Courrier", 18), bg="#FFCCFF", fg="#FF0080", width=30, command=self.login())
+			"Courrier", 18), bg="#FFCCFF", fg="#FF0080", width=30, command=self.add_question)
 		buttonQuestion.grid(row=1, column=2, padx=10, pady=10)
 
 		buttonQuizz = Button(self.information, text="Quizz", font=(
-			"Courrier", 18), bg="#FFCCFF", fg="#FF0080", width=30, command=self.login())
+			"Courrier", 18), bg="#FFCCFF", fg="#FF0080", width=30)
 		buttonQuizz.grid(row=2, column=2, padx=10, pady=10)
 
 		label_histo = Label(self.information, text="Historique:", font=(
@@ -78,6 +80,24 @@ class Class_menu:
 		self.window.destroy()
 		window_login = IL.Interface_login()
 		window_login.afficher()
+
+	def add_question(self):
+		conn = sqlite3.connect('database.db')
+		curs = conn.cursor()
+		if curs.execute(f"SELECT isAdmin FROM Utilisateur WHERE nom = '{self.login}'").fetchall()[0][0] == 'TRUE':
+			self.window.destroy()
+			window_creation = IQ.Interface_creation_Question(self.login)
+			window_creation.afficher()
+		else:
+			self.popup("vous n'avez pas l'autorisation nécéssaire")
+
+	def popup(self, message):
+		popup = Tk()
+		label = Label(popup, text=message)
+		ok = Button(popup, text="ok", command=popup.destroy)
+		label.pack()
+		ok.pack()
+		popup.mainloop()
 
 	def login(self):
 		'''username = label1.get()

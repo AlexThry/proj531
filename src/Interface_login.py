@@ -91,7 +91,6 @@ class Interface_login:
 		self.is_admin = False
 		if curs.execute(f"SELECT * FROM Utilisateur WHERE nom = '{username}'").fetchall():
 			user = curs.execute(f"SELECT * FROM Utilisateur WHERE nom = '{username}'").fetchall()[0]
-			print(user)
 			bon_mdp = password == user[2]
 
 			if bon_mdp:
@@ -100,7 +99,7 @@ class Interface_login:
 				database.set_user(username)
 
 				self.window.destroy()
-				window_menu = Class_menu()
+				window_menu = Interfac_menu(username)
 				window_menu.afficher()
 				
 				if user[3] == "TRUE":
@@ -109,6 +108,7 @@ class Interface_login:
 				self.color = "#F93106"
 				time.sleep(0.5)
 				self.color = "#6666FF"
+				self.popup("mauvais mot de passe")
 
 
 			
@@ -121,19 +121,41 @@ class Interface_login:
 		if not (curs.execute(f"SELECT nom FROM Utilisateur WHERE nom = '{login}'").fetchall()):
 			mdp = self.label2.get()
 			admin_key = self.label3.get()
+
+			self.erase()
+
 			if admin_key:
 				if admin_key == game.get_admin_key():
 					curs.execute(
 						f"INSERT INTO Utilisateur(nom, mdp, isadmin) VALUES(?, ?, ?)", (login, mdp, "TRUE"))
 					conn.commit()
+					self.popup("vous avez crée un compte")
+				else:
+					self.popup("mauvaise clé admin")
 			else:
 				curs.execute(
 					f"INSERT INTO Utilisateur(nom, mdp, isadmin) VALUES(?, ?, ?)", (login, mdp, "FALSE"))
 				conn.commit()
+				self.popup("vous avez crée un compte")
 		else:
-			print("Cet utilisateur est déjà existant")
+			self.erase()
+			self.popup("utilisateur éxistant")
 
 
+	def popup(self, message):
+		popup = Tk()
+		label = Label(popup, text=message)
+		ok = Button(popup, text="ok", command=popup.destroy)
+		label.pack()
+		ok.pack()
+		popup.mainloop()
+
+	def erase(self):
+		self.label1.delete(0, END)
+		self.label2.delete(0, END)
+		self.label3.delete(0, END)
+
+	
 		
 
 	def afficher(self):
